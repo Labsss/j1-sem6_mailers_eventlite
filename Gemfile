@@ -66,3 +66,5 @@ gem 'table_print'
 gem 'faker'
 
 gem 'dotenv-rails'
+
+gem 'bcrypt'
