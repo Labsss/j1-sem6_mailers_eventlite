@@ -4,7 +4,7 @@ class Event < ApplicationRecord
     has_many :attendances
 
     validates :start_date, presence: true  #(:start_date_cannot_be_in_the_past)
-    validates :duration, presence: true, numericality: true, greater_than: 0 
+    validates :duration, presence: true, numericality: true
     validate :multiple_de_5
     validates :title, presence: true, length: { in: 5..140 }
     validates :description, presence: true, length: { in: 20..1000 }
@@ -19,8 +19,8 @@ class Event < ApplicationRecord
 #    end
 
     def multiple_de_5
-        if duration % 5 != 0
-            error.add(:duration, "Multiple of 5 please !")
+        if duration % 5 != 0 && duration < 0
+            error.add(:duration, "Multiple of 5 & greater than 0 please !")
         end
     end 
 end
